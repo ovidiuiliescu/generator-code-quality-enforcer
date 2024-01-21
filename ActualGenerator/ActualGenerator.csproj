@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Code generators need to target either netstandard2.0 or 2.1 -->
+		<TargetFramework>netstandard2.0</TargetFramework>
+
+		<!-- Useful for debugging, if you have the Compiler Platform SDK installed. -->
+		<!-- Not required though, you can just invoke the debugger via code. -->
+		<IsRoslynComponent>true</IsRoslynComponent>
+		<sourcegenerator_enabledebug>True</sourcegenerator_enabledebug>
+	  
+		<!-- Don't allow some problematic APIs to be used in generators -->
+		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.8.0" />
+	</ItemGroup>
+
+	<!-- Mark the Common project as an analyzer, even though it is not, so that it can be located properly at build time. -->
+	<ItemGroup>
+		<ProjectReference Include="..\Common\Common.csproj" OutputItemType="Analyzer" />
+	</ItemGroup>
+
+</Project>
